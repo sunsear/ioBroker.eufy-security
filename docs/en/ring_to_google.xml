@@ -1,0 +1,184 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</variable>
+  </variables>
+  <block type="on_ext" id="O!ej`P.rPj[pXTu4+O:Q" x="113" y="288">
+    <mutation xmlns="http://www.w3.org/1999/xhtml" items="1"></mutation>
+    <field name="CONDITION">ne</field>
+    <field name="ACK_CONDITION"></field>
+    <value name="OID0">
+      <shadow type="field_oid" id="+dUdLbg)aXjbFRrnD^9+">
+        <field name="oid">eufy-security.0.T8010P2320282A4C.cameras.T8210P00203018BD.ringing</field>
+      </shadow>
+    </value>
+    <statement name="STATEMENT">
+      <block type="debug" id="NFiErX*|@+L1Y)Szj$jT">
+        <field name="Severity">log</field>
+        <value name="TEXT">
+          <shadow type="text" id="-d;swt8vbl`JIM|]#k~l">
+            <field name="TEXT">Doorbell rung</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="controls_if" id="T-/=8Kcw52S~Jk|#zB1?">
+            <value name="IF0">
+              <block type="logic_compare" id="!o_AKx*h}]Vyc{+,^={W">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="on_source" id="%xes_/G/0JA;Q/Bz,5]p">
+                    <field name="ATTR">state.val</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="UF{dD`!]Y^Zd:9wY)bE(">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id=":N5(i:b8vmpc$AJ6k0RM">
+                <field name="VAR" id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</field>
+                <value name="VALUE">
+                  <block type="text" id="U7}V2/^S2k)=B:HLvGft">
+                    <field name="TEXT">chromecast.0.deurbel_avond.player</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="hDP:*UEa52Rd/.AP*nzA">
+                    <value name="IF0">
+                      <block type="logic_operation" id="[uj1V]B4AJFfM8tRSzp=">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="time_compare" id="!L7$VP;K+g((MKB6c6+o">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" end_time="false"></mutation>
+                            <field name="OPTION">&gt;</field>
+                            <field name="START_TIME">7:30</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="time_compare" id="{7UlI54;j,{J-b`Py~TL">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" end_time="false"></mutation>
+                            <field name="OPTION">&lt;</field>
+                            <field name="START_TIME">19:00</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="7c(KY!O$uhAN+i8RJAX7">
+                        <field name="VAR" id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</field>
+                        <value name="VALUE">
+                          <block type="text" id="{K4U~,R75,qnH,lr[n[W">
+                            <field name="TEXT">chromecast.0.deurbel_overdag.player</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="debug" id="XUw4{N#P~-[YOSr~L(tL">
+                        <field name="Severity">log</field>
+                        <value name="TEXT">
+                          <shadow type="text" id="IEXI=@`Z-Peg%d-2b}cK">
+                            <field name="TEXT">Test of </field>
+                          </shadow>
+                          <block type="text_join" id="@E3.[13Pn2DVQ[@qH,%2">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="vpPG~qVjl`o%ea.NQ*P%">
+                                <field name="TEXT">Chromecast url triggered: </field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="variables_get" id="W{OHF0zx-|G+QawWiRqz">
+                                <field name="VAR" id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="control_ex" id="vfX:|1WtI/rxhmGe:C!@">
+                            <field name="TYPE">false</field>
+                            <field name="CLEAR_RUNNING">FALSE</field>
+                            <value name="OID">
+                              <shadow type="field_oid">
+                                <field name="oid">Object ID</field>
+                              </shadow>
+                              <block type="text_join" id=".p?9,`O~jQZ#E+.*;f[J">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="variables_get" id="TV4GcK|O93SR@]*1VTGI">
+                                    <field name="VAR" id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="text" id="Gr,HeZ2(8xKFVkO3$HA%">
+                                    <field name="TEXT">.volume</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="VALUE">
+                              <shadow type="logic_boolean">
+                                <field name="BOOL">TRUE</field>
+                              </shadow>
+                              <block type="text" id="nppq].geY-ov)j8DH|QS">
+                                <field name="TEXT">50</field>
+                              </block>
+                            </value>
+                            <value name="DELAY_MS">
+                              <shadow type="math_number" id="@l4LOEIq7I4=cf(v0x4G">
+                                <field name="NUM">0</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="control_ex" id="Cb`}-YrhR[v0Z|gK9)5)">
+                                <field name="TYPE">false</field>
+                                <field name="CLEAR_RUNNING">FALSE</field>
+                                <value name="OID">
+                                  <shadow type="field_oid" id="91R=g;;8[-)6q%%wy};W">
+                                    <field name="oid">Object ID</field>
+                                  </shadow>
+                                  <block type="text_join" id="jS-E]+)7{WCNw;Z{)bZc">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="variables_get" id="gfn[^:gPY%G!Gn(jvZjn">
+                                        <field name="VAR" id="Q{/V42xv2CT~(=8X9C{3">chromecast-group</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="text" id="a[g4e@;oGD|miA{SRC@=">
+                                        <field name="TEXT">.url2play</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="VALUE">
+                                  <shadow type="logic_boolean" id="7.~7m|]K55MVF:NTtZ8%">
+                                    <field name="BOOL">TRUE</field>
+                                  </shadow>
+                                  <block type="text" id="1(|BBgr]oauH`CBzVHnh">
+                                    <field name="TEXT">http://growingpassion.eu/wp-content/uploads/2021/02/Voordeur-waarschuwing.m4a</field>
+                                  </block>
+                                </value>
+                                <value name="DELAY_MS">
+                                  <shadow type="math_number" id="TqM1y+w0p72j|FBhEqIt">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
